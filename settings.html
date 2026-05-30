@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Settings | ProTrade Analytics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body {
+            font-family: 'DM Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        /* Custom scrollbar for data-heavy views */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101415;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #323537;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #45464d;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#c6c6cd",
+                        "surface-container-highest": "#323537",
+                        "on-tertiary-fixed": "#002113",
+                        "surface-container-high": "#272a2c",
+                        "on-primary-fixed": "#131b2e",
+                        "error": "#ffb4ab",
+                        "secondary-container": "#0566d9",
+                        "tertiary-fixed": "#6ffbbe",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "primary-container": "#0f172a",
+                        "on-secondary": "#002e6a",
+                        "error-container": "#93000a",
+                        "background": "#101415",
+                        "surface-variant": "#323537",
+                        "inverse-surface": "#e0e3e5",
+                        "primary-fixed-dim": "#bec6e0",
+                        "primary-fixed": "#dae2fd",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-container": "#e6ecff",
+                        "surface-dim": "#101415",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "tertiary-container": "#001c10",
+                        "surface": "#101415",
+                        "surface-container": "#1d2022",
+                        "on-error": "#690005",
+                        "surface-tint": "#bec6e0",
+                        "on-secondary-fixed-variant": "#004395",
+                        "surface-bright": "#363a3b",
+                        "on-primary": "#283044",
+                        "surface-container-lowest": "#0b0f10",
+                        "on-primary-container": "#798098",
+                        "on-tertiary-container": "#009365",
+                        "secondary-fixed": "#d8e2ff",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "on-secondary-fixed": "#001a42",
+                        "inverse-primary": "#565e74",
+                        "inverse-on-surface": "#2d3133",
+                        "on-surface": "#e0e3e5",
+                        "tertiary": "#4edea3",
+                        "on-tertiary": "#003824",
+                        "outline": "#909097",
+                        "on-background": "#e0e3e5",
+                        "primary": "#bec6e0",
+                        "secondary": "#adc6ff",
+                        "outline-variant": "#45464d",
+                        "surface-container-low": "#191c1e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit-xl": "2.5rem",
+                        "sidebar-width": "280px",
+                        "gutter": "1.5rem",
+                        "unit-xs": "0.25rem",
+                        "unit-lg": "1.5rem",
+                        "unit-sm": "0.5rem",
+                        "container-padding": "2rem",
+                        "unit-md": "1rem"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["DM Sans"],
+                        "label-uppercase": ["DM Sans"],
+                        "title-md": ["DM Sans"],
+                        "headline-lg-mobile": ["DM Sans"],
+                        "body-sm": ["DM Sans"],
+                        "headline-lg": ["DM Sans"],
+                        "display-lg": ["DM Sans"],
+                        "data-mono": ["DM Sans"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-uppercase": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "title-md": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "data-mono": ["14px", {"lineHeight": "1", "letterSpacing": "-0.01em", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- Sidebar Navigation -->
+<aside class="fixed left-0 top-0 h-full w-[280px] z-50 bg-surface-container-low dark:bg-surface-container-low border-r border-outline-variant dark:border-outline-variant flex flex-col h-full py-unit-lg px-unit-md hidden md:flex">
+<div class="mb-unit-xl px-unit-sm">
+<h1 class="font-display-lg text-headline-lg font-black text-primary dark:text-primary tracking-tight">ProTrade</h1>
+<p class="font-label-uppercase text-label-uppercase text-on-surface-variant mt-1 opacity-70">Institutional Grade</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-unit-md py-unit-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all duration-150 rounded-lg group" href="index.html">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-title-md text-body-lg">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-unit-md py-unit-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all duration-150 rounded-lg" href="trades.html">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-title-md text-body-lg">Trades</span>
+</a>
+<a class="flex items-center gap-3 px-unit-md py-unit-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all duration-150 rounded-lg" href="calendar.html">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="font-title-md text-body-lg">Calendar</span>
+</a>
+<a class="flex items-center gap-3 px-unit-md py-unit-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all duration-150 rounded-lg" href="analytics.html">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-title-md text-body-lg">Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-unit-md py-unit-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all duration-150 rounded-lg" href="psychology.html">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+<span class="font-title-md text-body-lg">Psychology</span>
+</a>
+<a class="flex items-center gap-3 px-unit-md py-unit-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all duration-150 rounded-lg" href="ai-journal.html">
+<span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span>
+<span class="font-title-md text-body-lg">AI Journal</span>
+</a>
+<a class="flex items-center gap-3 px-unit-md py-unit-sm bg-secondary-container dark:bg-secondary-container text-on-secondary-container dark:text-on-secondary-container rounded-lg font-semibold shadow-sm" href="settings.html">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-title-md text-body-lg">Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-unit-lg border-t border-outline-variant">
+<div class="bg-primary-container p-unit-md rounded-xl mb-unit-lg">
+<p class="font-label-uppercase text-label-uppercase text-primary mb-2">PRO PLAN ACTIVE</p>
+<div class="flex items-center justify-between">
+<span class="text-on-primary-container font-title-md text-body-lg">Institutional</span>
+<span class="material-symbols-outlined text-tertiary" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<div class="flex items-center gap-3 px-unit-sm">
+<img alt="Alex Rivera Profile" class="w-10 h-10 rounded-full object-cover border-2 border-outline-variant" data-alt="A close-up professional headshot of a Hispanic male trader with a confident expression, set against a blurred high-end corporate office background. The lighting is crisp and cool-toned, echoing a sophisticated financial command center atmosphere. The overall aesthetic is clean, sharp, and corporate, emphasizing professional reliability and executive presence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDnTHNnunvWmkie1CApH-3tQi0fQRwKPaMh5QlauP1URKr0um16Q60OHduNodlZioilV4B9nBlYr7mp9JYPkmlxmO7BKw-Xp3OAqcn3nIKNsPb4gQIvHIRfFvCoVMHecHl7pl1HXeWMDE65-bt2qxGxv5D2hxChhMD11hcvZpxCQ1uZehz347lV9zW7_8W0x0B00x246mPFotmY3-cjmDN1W25Py1M126Dog3CGoNI-12Fg-FBVaSbJEMSFJTxhcQM6_hlwfGl7nGa"/>
+<div class="flex-1">
+<p class="font-title-md text-body-lg leading-none">Alex Rivera</p>
+<p class="text-body-sm text-on-surface-variant">Pro Member</p>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+</button>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="md:ml-[280px] min-h-screen flex flex-col">
+<!-- Top Navigation Bar -->
+<header class="bg-surface-container dark:bg-surface-container sticky top-0 z-40 border-b border-outline-variant dark:border-outline-variant shadow-sm h-16 w-full flex items-center justify-between px-gutter">
+<div class="flex items-center gap-unit-md max-w-xl w-full">
+<div class="relative w-full max-w-md hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
+<input class="w-full bg-background border-none rounded-lg py-2 pl-10 pr-4 text-body-sm focus:ring-1 focus:ring-primary text-on-surface placeholder-on-surface-variant/50" placeholder="Search settings, docs, or trades..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-2 px-unit-md py-2 bg-secondary text-on-secondary rounded-lg font-bold text-label-uppercase hover:opacity-90 transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+                    Add Trade
+                </button>
+<div class="h-6 w-[1px] bg-outline-variant mx-2"></div>
+<button class="text-on-surface-variant hover:bg-surface-bright p-2 rounded-full transition-colors relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full border-2 border-surface-container"></span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-bright p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="flex-1 p-unit-md md:p-unit-xl max-w-[1600px] w-full mx-auto">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-unit-md mb-unit-xl">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">System Settings</h2>
+<p class="text-body-lg text-on-surface-variant">Manage your institutional trading environment and account security.</p>
+</div>
+<div class="flex items-center p-1 bg-surface-container-high rounded-xl">
+<button class="px-4 py-2 rounded-lg bg-surface-bright text-on-surface font-bold text-label-uppercase flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="dark_mode" style="font-variation-settings: 'FILL' 1;">dark_mode</span>
+                        Dark
+                    </button>
+<button class="px-4 py-2 rounded-lg text-on-surface-variant font-bold text-label-uppercase flex items-center gap-2 hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="light_mode">light_mode</span>
+                        Light
+                    </button>
+</div>
+</div>
+<!-- Settings Layout: Sidebar Tabs + Content -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-unit-xl items-start">
+<!-- Inner Tab Navigation -->
+<div class="lg:col-span-3 space-y-2">
+<button class="settings-tab w-full flex items-center gap-4 p-4 rounded-xl bg-surface-container text-primary border-l-4 border-primary shadow-sm font-bold text-left transition-all" id="tab-account" onclick="switchTab('account')">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+                        Account
+                    </button>
+<button class="settings-tab w-full flex items-center gap-4 p-4 rounded-xl text-on-surface-variant hover:bg-surface-container-high text-left transition-all" id="tab-security" onclick="switchTab('security')">
+<span class="material-symbols-outlined" data-icon="security">security</span>
+                        Security
+                    </button>
+<button class="settings-tab w-full flex items-center gap-4 p-4 rounded-xl text-on-surface-variant hover:bg-surface-container-high text-left transition-all" id="tab-notifications" onclick="switchTab('notifications')">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+                        Notifications
+                    </button>
+<button class="settings-tab w-full flex items-center gap-4 p-4 rounded-xl text-on-surface-variant hover:bg-surface-container-high text-left transition-all" id="tab-billing" onclick="switchTab('billing')">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+                        Billing
+                    </button>
+<button class="settings-tab w-full flex items-center gap-4 p-4 rounded-xl text-on-surface-variant hover:bg-surface-container-high text-left transition-all" id="tab-api" onclick="switchTab('api')">
+<span class="material-symbols-outlined" data-icon="api">api</span>
+                        API Connections
+                    </button>
+</div>
+<!-- Main Configuration Panel -->
+<div class="lg:col-span-9 space-y-8">
+<!-- Profile Section (Account Tab Content) -->
+<section class="bg-surface-container-low border border-outline-variant rounded-2xl p-unit-lg shadow-sm">
+<div class="flex items-center justify-between mb-unit-lg border-b border-outline-variant pb-4">
+<div>
+<h3 class="font-title-md text-title-md text-on-surface">Personal Information</h3>
+<p class="text-body-sm text-on-surface-variant">Update your photo and personal details.</p>
+</div>
+<button class="px-unit-lg py-2 bg-secondary text-on-secondary rounded-lg font-bold text-label-uppercase hover:opacity-90">Save Changes</button>
+</div>
+<div class="flex flex-col md:flex-row gap-unit-xl">
+<div class="flex-shrink-0">
+<div class="relative group cursor-pointer">
+<img alt="Profile big" class="w-32 h-32 rounded-2xl object-cover border-4 border-surface-container-high" data-alt="A large-scale, detailed professional portrait of a male trader in high-resolution, exhibiting strong character and expertise. The lighting is dramatic yet soft, catching the subtle textures of a tailored blazer and the modern glass environment behind him. Deep charcoal and cool navy tones dominate the scene, reflecting a premium institutional brand aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuALFupuXDw7uUjWXYv8vH0gNRz_7IvNL1K76HHCCq5oiTtiXP-r5XnZvLA_WC6DvPVdd1cGrYnAfLLiTs_KavQnvrcIQhEGOEXsUaGZVA2jNNtv7Ym3LZHTngtfrMOcsiX7wGqxTGMirGoY3-OoT2WrHWhhSpZ3FnBMlJJ59NSAXLLB6YTKnXIIkPQn3ItLScOR5OU8U7_4MtHkeq3PCUFsRpCfR5KoGVglRKivlDgrYrEBj6ZQn-M2jHXmvE9Qe7lI64QKoUS4P_z4"/>
+<div class="absolute inset-0 bg-black/40 rounded-2xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-white" data-icon="photo_camera">photo_camera</span>
+</div>
+</div>
+<button class="mt-4 w-full text-center text-label-uppercase text-secondary font-bold hover:underline">Remove Photo</button>
+</div>
+<div class="flex-1 grid grid-cols-1 md:grid-cols-2 gap-unit-md">
+<div class="space-y-2">
+<label class="font-label-uppercase text-label-uppercase text-on-surface-variant">FULL NAME</label>
+<input class="w-full bg-surface-container-highest border-none rounded-lg p-3 text-body-lg text-on-surface focus:ring-1 focus:ring-primary" type="text" value="Alex Rivera"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-uppercase text-label-uppercase text-on-surface-variant">EMAIL ADDRESS</label>
+<input class="w-full bg-surface-container-highest border-none rounded-lg p-3 text-body-lg text-on-surface focus:ring-1 focus:ring-primary" type="email" value="alex.rivera@protrade.com"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-uppercase text-label-uppercase text-on-surface-variant">TIMEZONE</label>
+<select class="w-full bg-surface-container-highest border-none rounded-lg p-3 text-body-lg text-on-surface focus:ring-1 focus:ring-primary">
+<option>(GMT-05:00) Eastern Time (US &amp; Canada)</option>
+<option>(GMT+00:00) London</option>
+<option>(GMT+09:00) Tokyo</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="font-label-uppercase text-label-uppercase text-on-surface-variant">TRADING ROLE</label>
+<input class="w-full bg-surface-container-highest border-none rounded-lg p-3 text-body-lg text-on-surface focus:ring-1 focus:ring-primary" type="text" value="Proprietary Trader"/>
+</div>
+</div>
+</div>
+</section>
+<!-- API Connections Section -->
+<section class="bg-surface-container-low border border-outline-variant rounded-2xl p-unit-lg shadow-sm">
+<div class="flex items-center justify-between mb-unit-lg">
+<div>
+<h3 class="font-title-md text-title-md text-on-surface">Brokerage Sync</h3>
+<p class="text-body-sm text-on-surface-variant">Connect your trading accounts for automated trade journaling.</p>
+</div>
+<button class="flex items-center gap-2 px-unit-lg py-2 border border-outline text-on-surface rounded-lg font-bold text-label-uppercase hover:bg-surface-container-highest">
+<span class="material-symbols-outlined text-[18px]" data-icon="sync">sync</span>
+                                Refresh All
+                            </button>
+</div>
+<div class="space-y-3">
+<!-- Connection Item -->
+<div class="flex items-center justify-between p-4 bg-surface-container-high rounded-xl border border-outline-variant/30">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-[#FF6B00] rounded-lg flex items-center justify-center font-black text-white text-xl">IB</div>
+<div>
+<p class="font-title-md text-body-lg text-on-surface">Interactive Brokers</p>
+<div class="flex items-center gap-2 text-tertiary text-body-sm">
+<span class="w-2 h-2 bg-tertiary rounded-full animate-pulse"></span>
+                                            Connected • Real-time
+                                        </div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-body-sm text-on-surface-variant hidden md:block">Last sync: 2 mins ago</span>
+<button class="text-on-surface-variant hover:text-error p-2">
+<span class="material-symbols-outlined" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+<!-- Connection Item -->
+<div class="flex items-center justify-between p-4 bg-surface-container-high rounded-xl border border-outline-variant/30">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-[#00A1E0] rounded-lg flex items-center justify-center font-black text-white text-xl">TD</div>
+<div>
+<p class="font-title-md text-body-lg text-on-surface">TD Ameritrade</p>
+<div class="flex items-center gap-2 text-on-surface-variant text-body-sm">
+<span class="w-2 h-2 bg-outline rounded-full"></span>
+                                            Disconnected
+                                        </div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="px-4 py-1.5 bg-primary text-on-primary rounded-lg font-bold text-label-uppercase">Reconnect</button>
+</div>
+</div>
+<button class="w-full py-4 border-2 border-dashed border-outline-variant rounded-xl text-on-surface-variant font-bold text-label-uppercase flex items-center justify-center gap-2 hover:bg-surface-container-high hover:border-primary transition-all group">
+<span class="material-symbols-outlined group-hover:text-primary" data-icon="add_circle">add_circle</span>
+                                Connect New Broker
+                            </button>
+</div>
+</section>
+<!-- Subscription Section -->
+<section class="bg-primary-container/30 border border-primary/20 rounded-2xl p-unit-lg shadow-sm relative overflow-hidden">
+<div class="absolute -right-16 -top-16 w-64 h-64 bg-secondary/10 rounded-full blur-3xl"></div>
+<div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+<div class="flex gap-4">
+<div class="w-14 h-14 bg-secondary-container rounded-2xl flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-[32px]" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface">Pro Institutional Membership</h3>
+<p class="text-body-lg text-on-surface-variant">Your next billing date is <span class="text-on-surface font-bold">October 24, 2024</span>.</p>
+<div class="mt-2 flex gap-4">
+<span class="text-body-sm font-bold text-secondary bg-secondary/10 px-2 py-0.5 rounded uppercase tracking-wider">Annual Billing</span>
+<span class="text-body-sm text-on-surface-variant">$2,400 / Year</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<button class="px-unit-lg py-2.5 bg-secondary text-on-secondary rounded-lg font-bold text-label-uppercase shadow-lg hover:shadow-secondary/20 transition-all">Manage Subscription</button>
+<p class="text-[10px] text-center text-on-surface-variant uppercase tracking-widest">Upgrade to Enterprise for API access</p>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="mt-auto py-unit-lg border-t border-outline-variant text-center">
+<p class="text-body-sm text-on-surface-variant">ProTrade Analytics v4.2.0 • Build 8820-A • <a class="text-primary hover:underline" href="#">Support</a></p>
+</footer>
+</main>
+<!-- Mobile Navigation Shell (Bottom Bar) -->
+<nav class="fixed bottom-0 left-0 w-full bg-surface-container border-t border-outline-variant grid grid-cols-5 md:hidden z-50">
+<button class="flex flex-col items-center justify-center py-3 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-[10px] font-bold mt-1">HOME</span>
+</button>
+<button class="flex flex-col items-center justify-center py-3 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="text-[10px] font-bold mt-1">CHART</span>
+</button>
+<button class="flex flex-col items-center justify-center py-3">
+<div class="bg-secondary p-2 rounded-full -mt-8 shadow-xl border-4 border-background">
+<span class="material-symbols-outlined text-on-secondary" data-icon="add">add</span>
+</div>
+</button>
+<button class="flex flex-col items-center justify-center py-3 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="text-[10px] font-bold mt-1">LOGS</span>
+</button>
+<button class="flex flex-col items-center justify-center py-3 text-primary">
+<span class="material-symbols-outlined" data-icon="settings" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="text-[10px] font-bold mt-1">SET</span>
+</button>
+</nav>
+<script>
+        function switchTab(tabId) {
+            // Reset all tabs
+            const tabs = document.querySelectorAll('.settings-tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('bg-surface-container', 'text-primary', 'border-l-4', 'border-primary', 'shadow-sm', 'font-bold');
+                tab.classList.add('text-on-surface-variant', 'hover:bg-surface-container-high');
+            });
+
+            // Set active tab
+            const activeTab = document.getElementById('tab-' + tabId);
+            activeTab.classList.add('bg-surface-container', 'text-primary', 'border-l-4', 'border-primary', 'shadow-sm', 'font-bold');
+            activeTab.classList.remove('text-on-surface-variant', 'hover:bg-surface-container-high');
+        }
+
+        // Simple animation effect for connection sync pulses
+        setInterval(() => {
+            const syncIcon = document.querySelector('[data-icon="sync"]');
+            if (syncIcon) {
+                syncIcon.style.transition = 'transform 0.5s ease-in-out';
+                syncIcon.style.transform = 'rotate(180deg)';
+                setTimeout(() => {
+                    syncIcon.style.transform = 'rotate(360deg)';
+                }, 500);
+            }
+        }, 5000);
+    </script>
+</body></html>
